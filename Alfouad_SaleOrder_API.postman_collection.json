@@ -1,0 +1,102 @@
+{
+  "info": {
+    "name": "Alfouad Pharmacies - Sale Order API",
+    "_postman_id": "alfouad-sale-order-api",
+    "description": "API endpoints for creating sale orders and retrieving location data.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://alfouadpharmacies-test.roayatec.com"
+    },
+    {
+      "key": "api_key",
+      "value": "DMR2as5Sh5kNUPhE9mgGiOa1fqqJsmMaqG8IaUO"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /api/get_stock",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Api-Key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/get_stock",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "get_stock"
+          ]
+        },
+        "description": "Returns available stock quantities for all products across all internal locations that have a location code set. Only returns lines where available quantity is greater than 0."
+      }
+    },
+    {
+      "name": "GET /api/locations",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Api-Key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/locations",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "locations"
+          ]
+        },
+        "description": "Returns all available location codes and their corresponding warehouse names."
+      }
+    },
+    {
+      "name": "POST /api/create_sale_order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Api-Key",
+            "value": "{{api_key}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer\": {\n    \"mobile\": \"01012345678\",\n    \"name\": \"Ahmed Mohamed\",\n    \"phone\": \"0221234567\",\n    \"email\": \"ahmed@example.com\",\n    \"street\": \"123 Tahrir St\",\n    \"street2\": \"\",\n    \"city\": \"Cairo\",\n    \"ref\": \"C001\"\n  },\n  \"location_code\": \"BT456\",\n  \"order_date\": \"2026-05-03\",\n  \"note\": \"Order from external system\",\n  \"order_lines\": [\n    {\n      \"product_ref\": \"PROD001\",\n      \"qty\": 2,\n      \"price_unit\": 50.0,\n      \"discount\": 0\n    },\n    {\n      \"product_ref\": \"PROD002\",\n      \"qty\": 1,\n      \"price_unit\": 200.0\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/create_sale_order",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "create_sale_order"
+          ]
+        },
+        "description": "Creates a sale order. If customer mobile exists, updates the contact. Otherwise creates a new one. Warehouse is resolved automatically from location_code."
+      }
+    }
+  ]
+}
