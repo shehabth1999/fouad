@@ -200,9 +200,12 @@ _shared_form_operations = [
         "content": _check_btn_column,
     },
 
-    # Hide: description (name) and taxes  — list fields inside a form use invisible:True
-    {"operation": "modify", "target": "field[name=order_lines.name]",   "content": {"invisible": True}},
-    {"operation": "modify", "target": "field[name=order_lines.tax_id]", "content": {"invisible": True}},
+    # Hide: description (name) and taxes
+    # These are listConfig COLUMNS → use visible:False  (NOT invisible:True)
+    # visible:False  = list-view column hiding
+    # invisible:True = form-field hiding  (different renderer, different key)
+    {"operation": "modify", "target": "field[name=order_lines.name]",   "content": {"visible": False}},
+    {"operation": "modify", "target": "field[name=order_lines.tax_id]", "content": {"visible": False}},
 
     # Product picker: blocked until branch selected; formChange for totals
     # width: 1.5 → relation base(2) × 1.5 = 3.0  (wide)
