@@ -247,7 +247,10 @@ class Command(BaseCommand):
         # Create new products
         if missing_refs:
             from modules.base.models.company import Company
-            company = Company.objects.first()
+            from modules.products.models import Uom
+            company  = Company.objects.first()
+            # Use the first available UOM — prevents FK violation when uom_id=1 absent
+            default_uom = Uom.objects.first()
             new_products = [
                 ProductTemplate(
                     name=api_products[ref]['name'],
@@ -256,6 +259,7 @@ class Command(BaseCommand):
                     company=company,
                     type='product',
                     sale_ok=True,
+                    **({'uom': default_uom, 'uom_po': default_uom} if default_uom else {}),
                 )
                 for ref in missing_refs
             ]

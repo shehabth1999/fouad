@@ -69,7 +69,9 @@ def sync_stock_from_api(self):
 
         if missing_refs:
             from modules.base.models.company import Company
-            company = Company.objects.first()
+            from modules.products.models import Uom
+            company     = Company.objects.first()
+            default_uom = Uom.objects.first()
             new_products = [
                 ProductTemplate(
                     name=api_products[ref]['name'],
@@ -78,6 +80,7 @@ def sync_stock_from_api(self):
                     company=company,
                     type='product',
                     sale_ok=True,
+                    **({'uom': default_uom, 'uom_po': default_uom} if default_uom else {}),
                 )
                 for ref in missing_refs
             ]

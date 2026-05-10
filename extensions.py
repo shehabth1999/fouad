@@ -180,13 +180,55 @@ class SalesOrderElFouadExtension(ModelExtension):
         """
         When header branch changes:
         - Return live domain so order_lines.product only shows branch products
-        - If no branch: domain blocks all products
+        - Also refresh on_hand_qty for ALL existing lines using the new branch
         """
-        return {
+        result = {
             'domain': {
                 'order_lines.product': _products_for_branch(self.branch_id),
             }
         }
+
+        if not self.branch_id:
+            return result
+
+        lines = getattr(self, '_original_data', {}).get('order_lines', [])
+        if not lines:
+            return result
+
+        try:
+            from el_fouad.models import BranchProductStock
+        except Exception:
+            return result
+
+        updated = []
+        for line in lines:
+            if not isinstance(line, dict):
+                updated.append(line)
+                continue
+            product_data = line.get('product')
+            if isinstance(product_data, dict):
+                product_id = product_data.get('id')
+            elif isinstance(product_data, (int, str)) and product_data:
+                try:
+                    product_id = int(product_data)
+                except Exception:
+                    product_id = None
+            else:
+                product_id = None
+
+            on_hand = Decimal('0.000')
+            if product_id:
+                stock = BranchProductStock.objects.filter(
+                    branch_id=self.branch_id,
+                    product_id=product_id,
+                ).first()
+                if stock:
+                    on_hand = stock.on_hand
+
+            updated.append({**line, 'on_hand_qty': float(on_hand)})
+
+        result['value'] = {'order_lines': updated}
+        return result
 
     @onchange(
         'order_lines.product_uom_qty',
