@@ -70,7 +70,7 @@ class Command(BaseCommand):
         """Create AlfouadAPIConfig if it doesn't exist."""
         from el_fouad.models import AlfouadAPIConfig
         obj, created = AlfouadAPIConfig.objects.get_or_create(
-            base_url='https://alfouadpharmacies-test.roayatec.com',
+            base_url='https://alfouadpharmacies.roayatec.com',
             defaults={
                 'api_key':  'DMR2as5Sh5kNUPhE9mgGiOa1fqqJsmMaqG8IaUO',
                 'enabled':  True,

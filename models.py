@@ -64,7 +64,7 @@ class AlfouadAPIConfig(BaseModel):
 
     base_url = models.CharField(
         max_length=255,
-        default='https://alfouadpharmacies-test.roayatec.com',
+        default='https://alfouadpharmacies.roayatec.com',
         verbose_name=_("Base URL"),
     )
 
