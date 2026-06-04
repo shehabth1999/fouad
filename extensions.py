@@ -115,6 +115,13 @@ class SalesOrderElFouadExtension(ModelExtension):
 
         # ── Build payload ─────────────────────────────────────────────────
         partner = order.partner
+
+        # city / state are ForeignKeys (City / State) — send their names, not the
+        # objects, otherwise json= serialization fails with
+        # "Object of type City is not JSON serializable".
+        city = getattr(partner, 'city', None)
+        state = getattr(partner, 'state', None)
+
         payload = {
             'customer': {
                 'mobile': getattr(partner, 'mobile', '') or getattr(partner, 'phone', '') or '',
@@ -123,7 +130,8 @@ class SalesOrderElFouadExtension(ModelExtension):
                 'email':  getattr(partner, 'email', '') or '',
                 'street': getattr(partner, 'street', '') or '',
                 'street2': getattr(partner, 'street2', '') or '',
-                'city':   getattr(partner, 'city', '') or '',
+                'city':   city.name if city else '',
+                'state':  state.name if state else '',
             },
             'location_code': order.branch.location_code or '',
             'order_date': str(order.date_order.date()) if order.date_order else '',
