@@ -1,0 +1,189 @@
+# Translation file - Auto-generated
+# Language: ar
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+msgid "\nEl Fouad module:\n- Adds Branch field (required) to Sales Orders\n- Resets order lines when branch changes\n- Filters product picker by selected branch\n- Tracks per-branch on-hand quantity (BranchProductStock)\n- Shows on_hand_qty per branch in order lines\n"
+msgstr "\nوحدة الفؤاد:\n- تضيف حقل الفرع (إلزامي) إلى أوامر البيع\n- تعيد ضبط بنود الأمر عند تغيير الفرع\n- تصفّي منتقي المنتجات حسب الفرع المحدد\n- تتتبع الكمية المتوفرة لكل فرع (BranchProductStock)\n- تعرض الكمية المتوفرة لكل فرع في بنود الأمر\n"
+
+msgid "API Key"
+msgstr "مفتاح API"
+
+msgid "API location_code from Alfouad Pharmacies (e.g. BT456)"
+msgstr "رمز الموقع (location_code) من صيدليات الفؤاد (مثال: BT456)"
+
+msgid "Alfouad API Config"
+msgstr "إعدادات API الفؤاد"
+
+msgid "Alfouad API Configs"
+msgstr "إعدادات API الفؤاد"
+
+msgid "Alfouad Location Code"
+msgstr "رمز موقع الفؤاد"
+
+msgid "Alfouad Order ID"
+msgstr "معرّف أمر الفؤاد"
+
+msgid "Alfouad Order Ref"
+msgstr "مرجع أمر الفؤاد"
+
+msgctxt "ui/views/batch.py"
+msgid "Alfouad Status"
+msgstr "حالة الفؤاد"
+
+msgid "Alfouad Sync"
+msgstr "مزامنة الفؤاد"
+
+msgid "Api-Key header value for Alfouad API"
+msgstr "قيمة ترويسة Api-Key الخاصة بـ API الفؤاد"
+
+msgid "Available"
+msgstr "متوفر"
+
+msgctxt "ui/views/batch.py"
+msgid "Available"
+msgstr "متوفر"
+
+msgid "Available Stock — %(p)s"
+msgstr "المخزون المتوفر — %(p)s"
+
+msgid "Base URL"
+msgstr "الرابط الأساسي"
+
+msgid "Branch"
+msgstr "الفرع"
+
+msgctxt "ui/views/batch.py"
+msgid "Branch"
+msgstr "الفرع"
+
+msgctxt "ui/views/views.py"
+msgid "Branch"
+msgstr "الفرع"
+
+msgid "Branch Product Stock"
+msgstr "مخزون منتج الفرع"
+
+msgid "Branch Product Stocks"
+msgstr "مخزون منتجات الفروع"
+
+msgid "Branch Stock"
+msgstr "مخزون الفرع"
+
+msgid "Branch-aware sales orders with per-branch on-hand stock tracking"
+msgstr "أوامر بيع مدركة للفرع مع تتبع المخزون المتوفر لكل فرع"
+
+msgid "Bulk Chunk Size"
+msgstr "حجم دفعة المعالجة"
+
+msgctxt "ui/views/batch.py"
+msgid "Check"
+msgstr "تحقق"
+
+msgctxt "ui/views/batch.py"
+msgid "Check Stock"
+msgstr "التحقق من المخزون"
+
+msgid "Disable to pause all background syncs"
+msgstr "قم بالتعطيل لإيقاف جميع المزامنات في الخلفية"
+
+msgid "El Fouad"
+msgstr "الفؤاد"
+
+msgid "Enabled"
+msgstr "مُفعّل"
+
+msgid "How often the stock sync Celery task runs"
+msgstr "عدد مرات تشغيل مهمة مزامنة المخزون (Celery)"
+
+msgid "Last Error"
+msgstr "آخر خطأ"
+
+msgid "Last Locations Sync"
+msgstr "آخر مزامنة للمواقع"
+
+msgid "Last Stock Sync"
+msgstr "آخر مزامنة للمخزون"
+
+msgid "Loading branch stock"
+msgstr "جارٍ تحميل مخزون الفرع"
+
+msgid "Most recent error from a failed sync"
+msgstr "أحدث خطأ من مزامنة فاشلة"
+
+msgid "No line selected."
+msgstr "لم يتم تحديد أي بند."
+
+msgid "No order lines with a valid product reference found."
+msgstr "لم يتم العثور على بنود أمر تحتوي على مرجع منتج صالح."
+
+msgid "No order selected."
+msgstr "لم يتم تحديد أي أمر."
+
+msgid "On Hand"
+msgstr "المتوفر"
+
+msgctxt "ui/views/views.py"
+msgid "On Hand"
+msgstr "المتوفر"
+
+msgid "Please select a branch before posting."
+msgstr "يرجى تحديد فرع قبل الترحيل."
+
+msgid "Please select a customer before posting."
+msgstr "يرجى تحديد عميل قبل الترحيل."
+
+msgid "Please select a product on this line first."
+msgstr "يرجى تحديد منتج على هذا البند أولاً."
+
+msgid "Post Failed: %(e)s"
+msgstr "فشل الترحيل: %(e)s"
+
+msgctxt "ui/views/batch.py"
+msgid "Post to Odoo"
+msgstr "ترحيل إلى Odoo"
+
+msgctxt "ui/views/batch.py"
+msgid "Posted At"
+msgstr "تاريخ الترحيل"
+
+msgid "Posted to Odoo At"
+msgstr "تاريخ الترحيل إلى Odoo"
+
+msgid "Product"
+msgstr "المنتج"
+
+msgctxt "ui/views/views.py"
+msgid "Product"
+msgstr "المنتج"
+
+msgid "Quantity %(ordered)s exceeds available stock (%(on_hand)s)."
+msgstr "الكمية %(ordered)s تتجاوز المخزون المتوفر (%(on_hand)s)."
+
+msgid "Quantity physically available at this branch"
+msgstr "الكمية المتوفرة فعلياً في هذا الفرع"
+
+msgid "Records processed per bulk_create / bulk_update call"
+msgstr "عدد السجلات المعالجة في كل استدعاء bulk_create / bulk_update"
+
+msgctxt "ui/views/batch.py"
+msgid "Select branch first…"
+msgstr "حدّد الفرع أولاً…"
+
+msgid "Stock Sync Status"
+msgstr "حالة مزامنة المخزون"
+
+msgid "Sync Interval (minutes)"
+msgstr "فاصل المزامنة (بالدقائق)"
+
+msgid "Timestamp when this order was pushed to Alfouad Odoo"
+msgstr "وقت دفع هذا الأمر إلى Odoo الفؤاد"
+
+msgid "✓ Order %(ref)s posted to Alfouad Odoo — Reference: %(odoo_ref)s"
+msgstr "✓ تم ترحيل الأمر %(ref)s إلى Odoo الفؤاد — المرجع: %(odoo_ref)s"
+
