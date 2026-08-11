@@ -154,33 +154,6 @@ _shared_form_operations = [
         },
     },
 
-    # The reference Odoo hands back on a successful post. Until now it was only
-    # shown in the toast that disappears seconds later, leaving no way to tie a
-    # Genie order to its Odoo counterpart from the UI.
-    {
-        "operation": "after",
-        "target": "field[name=alfouad_posted_at]",
-        "content": {
-            "name": "alfouad_order_name",
-            "string": _("Odoo Reference"),
-            "widget": "text",
-            "required": False,
-            "readonly": True,
-            "placeholder": _("Not posted yet"),
-        },
-    },
-    {
-        "operation": "after",
-        "target": "field[name=alfouad_order_name]",
-        "content": {
-            "name": "alfouad_order_id",
-            "string": _("Odoo Order ID"),
-            "widget": "number",
-            "required": False,
-            "readonly": True,
-        },
-    },
-
     # ── Hide "Other Information" tab entirely ─────────────────────────────────
     {
         "operation": "modify",
@@ -324,79 +297,6 @@ salesorder_list_el_fouad_batch = {
                 "editor": False,
                 "width": 1,
             },
-        },
-        # Odoo reference as a scannable column, so a whole day's orders can be
-        # reconciled against Odoo without opening each one.
-        {
-            "operation": "after",
-            "target": "field[name=branch]",
-            "content": {
-                "name": "alfouad_order_name",
-                "widget": "text",
-                "string": _("Odoo Ref"),
-                "editor": False,
-                "width": 0.8,
-            },
-        },
-    ],
-}
-
-# ── 4. Sales Order SEARCH view ───────────────────────────────────────────────
-# Lets staff paste an Odoo reference (e.g. GE00025) straight into the search box
-# and land on the matching Genie order.
-salesorder_search_el_fouad_batch = {
-    "key": "salesorder_search_el_fouad_batch",
-    "name": "Sales Order Search — El Fouad (Odoo reference)",
-    "model": "sales.salesorder",
-    "view_type": "search",
-    "priority": 30,
-    "inherit_mode": "extension",
-    "inherit_id": "salesorder_search_view",
-    "module": "el_fouad",
-    "inheritance_operations": [
-        {
-            "operation": "append",
-            "target": "search.search_fields",
-            "content": [
-                {
-                    "name": ["alfouad_order_name"],
-                    "string": _("Odoo Reference"),
-                    "widget": "text",
-                }
-            ],
-        },
-        {
-            "operation": "append",
-            "target": "search.filters",
-            "content": [
-                {
-                    "name": "posted_to_odoo_filter",
-                    "string": _("Posted to Odoo"),
-                    "filter": {
-                        "field": "alfouad_sync_state",
-                        "value": "Posted to Odoo",
-                        "operator": "eq",
-                    },
-                },
-                {
-                    "name": "post_failed_filter",
-                    "string": _("Post Failed"),
-                    "filter": {
-                        "field": "alfouad_sync_state",
-                        "value": "Post Failed",
-                        "operator": "eq",
-                    },
-                },
-                {
-                    "name": "not_posted_filter",
-                    "string": _("Not Posted to Odoo"),
-                    "filter": {
-                        "field": "alfouad_sync_state",
-                        "value": "Genie",
-                        "operator": "eq",
-                    },
-                },
-            ],
-        },
+        }
     ],
 }

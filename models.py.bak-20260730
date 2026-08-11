@@ -117,12 +117,9 @@ class AlfouadAPIConfig(BaseModel):
         return f"Alfouad API ({self.base_url}) — {'enabled' if self.enabled else 'disabled'}"
 
     def mark_sync_start(self):
-        # updated_at (auto_now) is written deliberately so it doubles as the
-        # lock heartbeat — sync_stock_from_api uses its age to detect a lock
-        # left behind by a worker that was killed before it could release it.
         self.stock_sync_status = 'running'
         self.last_error = ''
-        self.save(update_fields=['stock_sync_status', 'last_error', 'updated_at'])
+        self.save(update_fields=['stock_sync_status', 'last_error'])
 
     def mark_sync_done(self):
         self.stock_sync_status = 'idle'
